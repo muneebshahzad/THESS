@@ -234,10 +234,10 @@
 
     <tbody>
         {% for order in order_details %}
-    {% if order.customer_details %}
-        <tr>
-            <td>{{ order.order_num }}</td>
-            <td>
+            <tr>
+                        <td>{{ order.order_num }}</td>
+        <td>
+            {% if order.customer_details %}
                 {{ order.customer_details.name or "Unknown" }}<br>
                 {{ order.customer_details.address or "Not provided" }}<br>
                 {{ order.customer_details.city or "Unknown" }}<br>
@@ -259,10 +259,10 @@
                 {% else %}
                     <p>Phone number not available</p>
                 {% endif %}
-            </td>
-        </tr>
-    {% endif %}
-{% endfor %}
+            {% else %}
+                <p>Customer details not available</p>
+            {% endif %}
+        </td>
         <td>{{ order.customer_details.city or "Unknown" if order.customer_details else "Unknown" }}</td>
 
 
